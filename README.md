@@ -31,7 +31,7 @@ This is an implementation of a Model Context Protocol (MCP) server for MATLAB. I
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/jigarbhoye04/MatlabMCP.git
+    git clone https://github.com/luckywenfenghe/MATLAB_MCP_ARDUION.git
     cd MatlabMCP
     ```
 
