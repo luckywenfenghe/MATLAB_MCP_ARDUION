@@ -23,13 +23,70 @@ import matlab.engine
 mcp = FastMCP("MatlabMCP")
 
 
+def try_auto_start_matlab():
+    """
+    Try to automatically start MATLAB and share engine if no shared sessions found.
+    """
+    try:
+        import subprocess
+        import time
+        
+        logger.info("Attempting to auto-start MATLAB...")
+        
+        # Create temporary MATLAB script for sharing engine
+        startup_script = "temp_auto_startup.m"
+        with open(startup_script, 'w') as f:
+            f.write("matlab.engine.shareEngine;\n")
+            f.write("fprintf('MATLAB engine auto-shared successfully!\\n');\n")
+            f.write("fprintf('MCP Server can now connect.\\n');\n")
+        
+        # Start MATLAB with the startup script
+        subprocess.Popen(['matlab', '-r', f"run('{startup_script}')"], 
+                        stdout=subprocess.DEVNULL, 
+                        stderr=subprocess.DEVNULL)
+        
+        # Wait for MATLAB to start and share engine
+        logger.info("Waiting for MATLAB to start (30 seconds)...")
+        for i in range(30):
+            time.sleep(1)
+            names = matlab.engine.find_matlab()
+            if names:
+                logger.info("MATLAB engine auto-started successfully!")
+                # Clean up temporary file
+                try:
+                    os.remove(startup_script)
+                except:
+                    pass
+                return names
+            if i % 5 == 0:
+                logger.info(f"Still waiting... ({i+1}/30 seconds)")
+        
+        # Clean up temporary file if MATLAB didn't start
+        try:
+            os.remove(startup_script)
+        except:
+            pass
+            
+        logger.warning("Auto-start timeout. MATLAB may need manual startup.")
+        return []
+        
+    except Exception as e:
+        logger.error(f"Auto-start failed: {e}")
+        return []
+
 logger.info("Finding shared MATLAB sessions...")
 names = matlab.engine.find_matlab()
 logger.info(f"Found sessions: {names}")
 
 if not names:
-    logger.error("No shared MATLAB sessions found.")
-    logger.error("Please start MATLAB and run 'matlab.engine.shareEngine' in its Command Window.")
+    logger.warning("No shared MATLAB sessions found.")
+    logger.info("Attempting to auto-start MATLAB...")
+    names = try_auto_start_matlab()
+
+if not names:
+    logger.error("No shared MATLAB sessions found after auto-start attempt.")
+    logger.error("Please start MATLAB manually and run 'matlab.engine.shareEngine' in its Command Window.")
+    logger.error("Or use the provided batch file: start_matlab_mcp.bat")
     sys.exit(0)
 else:
     session_name = names[0] 

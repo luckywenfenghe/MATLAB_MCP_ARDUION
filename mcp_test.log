@@ -1,0 +1,175 @@
+2025-06-06 13:55:57,656 - MatlabMCP - INFO - Finding shared MATLAB sessions...
+2025-06-06 13:55:57,659 - MatlabMCP - INFO - Found sessions: ('MATLAB_4712',)
+2025-06-06 13:55:57,660 - MatlabMCP - INFO - Connecting to session: MATLAB_4712
+2025-06-06 13:55:57,820 - MatlabMCP - INFO - Successfully connected to shared MATLAB session.
+2025-06-06 13:55:57,931 - MatlabMCP - INFO - Running MATLAB code request: a = 2 + 3; b = a * 4; c = sqrt(b);...
+2025-06-06 13:55:57,966 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:55:57,973 - MatlabMCP - INFO - Attempting to get variable: 'a'
+2025-06-06 13:55:57,991 - MatlabMCP - ERROR - Unexpected error getting variable 'a': 变量名称必须为字符串，而非 int
+Traceback (most recent call last):
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\main.py", line 416, in getVariable
+    matlab_value = await asyncio.to_thread(get_var_sync)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\main.py", line 412, in get_var_sync
+    if var_str not in eng.workspace:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\matlabengine.py", line 118, in __getitem__
+    self.__validate_identity(attr)
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\matlabengine.py", line 144, in __validate_identity
+    raise TypeError(pythonengine.getMessage('VarNameMustBeStr',  type(attr).__name__))
+TypeError: 变量名称必须为字符串，而非 int
+2025-06-06 13:55:58,031 - MatlabMCP - INFO - Running MATLAB code request: M = [1 2 3; 4 5 6; 7 8 9]; det_M = det(M); inv_M = inv(M);...
+2025-06-06 13:55:58,208 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:55:58,213 - MatlabMCP - INFO - Running MATLAB code request: str1 = 'Hello'; str2 = 'World'; combined = strcat(str1, ' ', str2);...
+2025-06-06 13:55:58,254 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:55:58,262 - MatlabMCP - INFO - Running MATLAB code request: 
+            x = 0:0.1:2*pi;
+            y = sin(x);
+            figure('Visible', 'off');
+         ...
+2025-06-06 13:56:01,642 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:56:01,648 - MatlabMCP - INFO - Running MATLAB code request: 
+            test_data = rand(5, 3);
+            save('test_data.mat', 'test_data');
+            fil...
+2025-06-06 13:56:02,514 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:56:02,519 - MatlabMCP - INFO - Running MATLAB code request: 
+            test_function = @(x, y) x.^2 + y.^2;
+            result = test_function(3, 4);
+        ...
+2025-06-06 13:56:03,383 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:56:03,400 - MatlabMCP - INFO - Running MATLAB code request: invalid syntax here;...
+2025-06-06 13:56:03,971 - MatlabMCP - INFO - Direct evaluation failed with error: 未定义与 'char' 类型的输入参数相对应的函数 'invalid'。
+
+2025-06-06 13:56:03,972 - MatlabMCP - INFO - Falling back to simplified execution without capturing output...
+2025-06-06 13:56:04,000 - MatlabMCP - INFO - Simplified evaluation failed with error: 无效表达式。请检查缺失的乘法运算符、缺失或不对称的分隔符或者其他语法错误。要构造矩阵，请使用方括号而不是圆括号。
+
+2025-06-06 13:56:04,000 - MatlabMCP - INFO - Falling back to temp file approach...
+2025-06-06 13:56:04,027 - MatlabMCP - ERROR - All execution methods failed. Final error: 输出参数太多。
+
+2025-06-06 13:56:04,032 - MatlabMCP - INFO - Running MATLAB code request: result = undefined_variable * 2;...
+2025-06-06 13:56:04,066 - MatlabMCP - INFO - Direct evaluation failed with error: 函数或变量 'undefined_variable' 无法识别。
+
+2025-06-06 13:56:04,067 - MatlabMCP - INFO - Falling back to simplified execution without capturing output...
+2025-06-06 13:56:04,072 - MatlabMCP - INFO - Simplified evaluation failed with error: '=' 运算符的使用不正确。 '=' 用于为变量赋值，'==' 用于比较值的相等性。
+
+2025-06-06 13:56:04,073 - MatlabMCP - INFO - Falling back to temp file approach...
+2025-06-06 13:56:04,080 - MatlabMCP - ERROR - All execution methods failed. Final error: 输出参数太多。
+
+2025-06-06 13:56:04,087 - MatlabMCP - INFO - Running MATLAB code request: A = [1 2; 3 4]; B = [1; 2; 3]; C = A + B;...
+2025-06-06 13:56:04,099 - MatlabMCP - INFO - Direct evaluation failed with error: 对于此运算，数组的大小不兼容。
+
+2025-06-06 13:56:04,099 - MatlabMCP - INFO - Falling back to simplified execution without capturing output...
+2025-06-06 13:56:04,104 - MatlabMCP - INFO - Simplified evaluation failed with error: '=' 运算符的使用不正确。 '=' 用于为变量赋值，'==' 用于比较值的相等性。
+
+2025-06-06 13:56:04,105 - MatlabMCP - INFO - Falling back to temp file approach...
+2025-06-06 13:56:04,112 - MatlabMCP - ERROR - All execution methods failed. Final error: 输出参数太多。
+
+2025-06-06 13:56:04,122 - MatlabMCP - INFO - Handling MATLAB input request: 请输入文件名:
+2025-06-06 13:56:04,123 - MatlabMCP - INFO - Providing automatic response: 1
+2025-06-06 13:56:04,144 - MatlabMCP - ERROR - Unexpected error handling MATLAB input: 错误: 非法使用保留关键字 "global"。
+Traceback (most recent call last):
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\main.py", line 535, in handleMatlabInput
+    await asyncio.to_thread(eng.eval, "global AUTO_INPUT_RESPONSE; AUTO_INPUT_RESPONSE = [];")
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\matlabengine.py", line 71, in __call__
+    _stderr, feval=True).result()
+                         ^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\futureresult.py", line 62, in result
+    return self.__future.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\fevalfuture.py", line 76, in result
+    self._result = pythonengine.getFEvalResult(self._future,self._nargout, None, out=self._out, err=self._err)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: 错误: 非法使用保留关键字 "global"。
+
+2025-06-06 13:56:04,151 - MatlabMCP - INFO - Handling MATLAB input request: 是否继续处理数据? (y/n):
+2025-06-06 13:56:04,151 - MatlabMCP - INFO - Providing automatic response: y
+2025-06-06 13:56:04,156 - MatlabMCP - ERROR - Unexpected error handling MATLAB input: 错误: 非法使用保留关键字 "global"。
+Traceback (most recent call last):
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\main.py", line 535, in handleMatlabInput
+    await asyncio.to_thread(eng.eval, "global AUTO_INPUT_RESPONSE; AUTO_INPUT_RESPONSE = [];")
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\matlabengine.py", line 71, in __call__
+    _stderr, feval=True).result()
+                         ^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\futureresult.py", line 62, in result
+    return self.__future.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\fevalfuture.py", line 76, in result
+    self._result = pythonengine.getFEvalResult(self._future,self._nargout, None, out=self._out, err=self._err)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: 错误: 非法使用保留关键字 "global"。
+
+2025-06-06 13:56:04,164 - MatlabMCP - INFO - Handling MATLAB input request: 请输入采样频率:
+2025-06-06 13:56:04,164 - MatlabMCP - INFO - Providing automatic response: 1
+2025-06-06 13:56:04,188 - MatlabMCP - ERROR - Unexpected error handling MATLAB input: 错误: 非法使用保留关键字 "global"。
+Traceback (most recent call last):
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\main.py", line 535, in handleMatlabInput
+    await asyncio.to_thread(eng.eval, "global AUTO_INPUT_RESPONSE; AUTO_INPUT_RESPONSE = [];")
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\matlabengine.py", line 71, in __call__
+    _stderr, feval=True).result()
+                         ^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\futureresult.py", line 62, in result
+    return self.__future.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\fevalfuture.py", line 76, in result
+    self._result = pythonengine.getFEvalResult(self._future,self._nargout, None, out=self._out, err=self._err)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: 错误: 非法使用保留关键字 "global"。
+
+2025-06-06 13:56:04,196 - MatlabMCP - INFO - Handling MATLAB input request: 选择处理模式 (1-3):
+2025-06-06 13:56:04,196 - MatlabMCP - INFO - Providing automatic response: 1
+2025-06-06 13:56:04,203 - MatlabMCP - ERROR - Unexpected error handling MATLAB input: 错误: 非法使用保留关键字 "global"。
+Traceback (most recent call last):
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\main.py", line 535, in handleMatlabInput
+    await asyncio.to_thread(eng.eval, "global AUTO_INPUT_RESPONSE; AUTO_INPUT_RESPONSE = [];")
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\matlabengine.py", line 71, in __call__
+    _stderr, feval=True).result()
+                         ^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\futureresult.py", line 62, in result
+    return self.__future.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\luckywenfeng\Desktop\MatlabMCP\.venv\Lib\site-packages\matlab\engine\fevalfuture.py", line 76, in result
+    self._result = pythonengine.getFEvalResult(self._future,self._nargout, None, out=self._out, err=self._err)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: 错误: 非法使用保留关键字 "global"。
+
+2025-06-06 13:56:04,220 - MatlabMCP - INFO - Running MATLAB code request: 
+            arduino_files = {
+                'run_arduino_system.m', 
+                'auto_input....
+2025-06-06 13:56:04,234 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
+2025-06-06 13:56:04,243 - MatlabMCP - INFO - Running MATLAB code request: 
+            if exist('auto_input.m', 'file')
+                % 模拟调用auto_input
+                fprin...
+2025-06-06 13:56:04,250 - MatlabMCP - INFO - Code executed successfully using direct evaluation.
